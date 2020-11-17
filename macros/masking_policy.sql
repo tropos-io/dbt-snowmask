@@ -1,5 +1,5 @@
 
-{% macro masking_policy(masking_variables, roles_1, roles_2 ) %}
+{% macro masking_policy(masking_variables, roles_1=('',''), roles_2=('','') ) %}
 
     {# /* Creates temporary snapshot of the currently active masking policies in our schema */ #}
 
@@ -112,23 +112,23 @@
 
         create or replace masking policy string_mask as (val string) returns string ->
             case
-                when current_role() in {{ roles_1 }} then val
-                when val like '%@%.%'and current_role() in {{ roles_2 }} then regexp_replace(val,'.+\@','*****@')
-                when current_role() in {{ roles_2 }} then (md5(val||'dl6K92s'))
+                when current_role() in ({% for role in roles_1 %} '{{role}}' {%- if not loop.last %},{% endif -%}{% endfor %}) then val
+                when val like '%@%.%'and current_role() in ({% for role in roles_2 %} '{{role}}' {%- if not loop.last %},{% endif -%}{% endfor %}) then regexp_replace(val,'.+\@','*****@')
+                when current_role() in ({% for role in roles_2 %} '{{role}}' {%- if not loop.last %},{% endif -%}{% endfor %}) then (md5(val||'dl6K92s'))
                 else '**********'
             end;
     
         create or replace masking policy date_mask as (val date) returns date ->
             case
-                when current_role() in {{ roles_1 }}  then val
-                when current_role() in {{ roles_2 }}  then NULL
+                when current_role() in ({% for role in roles_1 %} '{{role}}' {%- if not loop.last %},{% endif -%}{% endfor %})  then val
+                when current_role() in ({% for role in roles_2 %} '{{role}}' {%- if not loop.last %},{% endif -%}{% endfor %})  then NULL
                 else NULL
             end;
 
         create or replace masking policy number_mask as (val number) returns number ->
             case
-                when current_role() in {{ roles_1 }}  then val
-                when current_role() in {{ roles_2 }}  then NULL
+                when current_role() in ({% for role in roles_1 %} '{{role}}' {%- if not loop.last %},{% endif -%}{% endfor %}) then val
+                when current_role() in ({% for role in roles_2 %} '{{role}}' {%- if not loop.last %},{% endif -%}{% endfor %})  then NULL
                 else NULL
             end;
 
