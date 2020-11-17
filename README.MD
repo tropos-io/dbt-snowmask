@@ -7,14 +7,11 @@
 
 
 ## Introduction
-A container that runs and  deploys a DBT (http://www.getdbt.com) model and deploys it to a data warehouse.
+
+A macro to create, alter and apply masking policies.
 
 ## Usage
 
-* * Container can be parametrized by setting the container environment variables outlined below
-```
-Docker run ...
-```
 
 ## Inputs
 
