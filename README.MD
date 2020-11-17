@@ -1,7 +1,3 @@
-# DBT Base runner container
-(c) 2019 by Tropos.io
-
-
 ## Introduction
 
 This repo contains a macro to create, alter and apply masking policies.
