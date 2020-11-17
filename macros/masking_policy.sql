@@ -1,5 +1,5 @@
 
-{% macro masking_policy(masking_variables, roles_1=('',''), roles_2=('','') ) %}
+{% macro masking_policy(masking_variables, roles_1=('',''), roles_2=('','')) %}
 
     {# /* Creates temporary snapshot of the currently active masking policies in our schema */ #}
 
