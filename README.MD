@@ -8,6 +8,6 @@ This macro creates, alters and applies masking policies.
 
 Usage:
 ```
-{{ masking_policy([('table_name','column_name)], ('role_group_1'), ('role_group_2')) }}
+{{ dbt_asana.masking_policy([('table_name','column_name)], ('role_group_1'), ('role_group_2')) }}
 ```
  
