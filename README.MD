@@ -1,11 +1,15 @@
 ## Introduction
-
 This repo contains the following macros:
 
 - `masking_policy.sql` to create, alter and apply masking policies in Snowflake using DBT.
 [Here](https://docs.snowflake.com/en/user-guide/security-column-ddm-intro.html), you can find some info on Dynamic Data Masking in Snowflake.
 
 - `row_column_masked_view.sql` to create an interactive view with row-level security.
+
+<br />
+
+## **IMPORTANT**
+Since dynamic data masking and row-level security are security measures, not every role or every user can create and alter the masking policies or RLS-views. This role has to have the privileges to define, manage, and apply masking policies to columns. It is best to have a specific role for this that is not used for anything else.
 
 <br />
 
