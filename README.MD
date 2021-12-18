@@ -52,7 +52,7 @@ packages:
 ```YAML
 # dbt_project.yml
 on-run-end:
-  - "{{ dbt_asana.masking_policy([('<table_name','<column_name>'),('<table_name','<column_name>')], 
+  - "{{ dbt_snowmask.masking_policy([('<table_name','<column_name>'),('<table_name','<column_name>')], 
         ('<roles_1>'),
         ('<roles_2>')) }}"
 
@@ -65,7 +65,7 @@ The roles are created in 2 levels. Every role in 'roles_1' has full access to th
 
 #### Usage:
 ```
-{{ dbt_asana.masking_policy([('table_name','column_name)], ('roles_1'), ('roles_2')) }}
+{{ dbt_snowmask.masking_policy([('table_name','column_name)], ('roles_1'), ('roles_2')) }}
 ```
  **'table_name'**: table name of the column you want masked\
  **'colum_name'**: column name of the column you want masked\
@@ -86,7 +86,7 @@ The roles are created in 2 levels. Every role in 'roles_1' has full access to th
 ```YAML
 # dbt_project.yml
 on-run-end:
-  - "{{ dbt_asana.masking_policy([('IDENTIFIERS','NAME'), ('IDENTIFIERS','FIRST_NAME'), ('PRIVATE','ADDRESS')], 
+  - "{{ dbt_snowmask.masking_policy([('IDENTIFIERS','NAME'), ('IDENTIFIERS','FIRST_NAME'), ('PRIVATE','ADDRESS')], 
         ('DIRECTOR','MANAGER'),
         ('JUNIOR')) }}"
 ```
@@ -117,7 +117,7 @@ packages:
 ```YAML
 # dbt_project.yml
 on-run-end:
-  - "{{ dbt_asana.row_column_masked_view('table_name', 'source_schema', 'source_table', 'key_table', 'key_csv', 'user_csv', 'control_user') }}"
+  - "{{ dbt_snowmask.row_column_masked_view('table_name', 'source_schema', 'source_table', 'key_table', 'key_csv', 'user_csv', 'control_user') }}"
 
 ```
 
@@ -140,7 +140,7 @@ sources:
 
 #### Usage:
 ```
-{{ dbt_asana.row_column_masked_view('table_name', 'source_schema', 'source_table', 'key_table', 'key_csv', 'user_csv', 'control_user') }}
+{{ dbt_snowmask.row_column_masked_view('table_name', 'source_schema', 'source_table', 'key_table', 'key_csv', 'user_csv', 'control_user') }}
 ```
  **'table_name'**: table name of the table you want to create your view on\
  **'source_schema'**: schema name that has been defined in your `sources.yml`\
@@ -161,7 +161,7 @@ sources:
 ```YAML
 # dbt_project.yml
 on-run-end:
-  - "{{ dbt_asana.row_column_masked_view('BILLS', 'SALES', 'RLS_RULES', 'ID', 'ID_NUMBER', 'USER', 'USER_000') }}"
+  - "{{ dbt_snowmask.row_column_masked_view('BILLS', 'SALES', 'RLS_RULES', 'ID', 'ID_NUMBER', 'USER', 'USER_000') }}"
 ```
 
 In this example, the row-level security will be set on the combination of the ID and USER. For example, if the csv file would look like the table below, USER_AAA would only see the rows of the table 'BILLS' that have the ID 111. In the same way USER_BBB would only see the rows with the ID 222. USER_000 (e.g., the supervisor), would see all rows with ID's defined in the csv file.
@@ -179,10 +179,10 @@ Ideally you would run both macro's together.
 ```YAML
 # dbt_project.yml
 on-run-end:
-  - "{{ dbt_asana.masking_policy([('<table_name','<column_name>'),('<table_name','<column_name>')], 
+  - "{{ dbt_snowmask.masking_policy([('<table_name','<column_name>'),('<table_name','<column_name>')], 
         ('<roles_1>'),
         ('<roles_2>')) }}"
-  - "{{ dbt_asana.row_column_masked_view('table_name', 'source_schema', 'source_table', 'key_table', 'key_csv', 'user_csv', 'control_user') }}"
+  - "{{ dbt_snowmask.row_column_masked_view('table_name', 'source_schema', 'source_table', 'key_table', 'key_csv', 'user_csv', 'control_user') }}"
 ```
 
 You first mask your columns based on the roles you have defined. Then you would use row-level security to create views on these masked tables for extra security and privacy. This way you have masking based on roles and users.
@@ -213,7 +213,7 @@ packages:
 ```YAML
 # dbt_project.yml
 on-run-end:
- - "{{ dbt_asana.create_security_integration('new_integration_name') }}"
+ - "{{ dbt_snowmask.create_security_integration('new_integration_name') }}"
 
 ```
 
@@ -222,7 +222,7 @@ on-run-end:
 
 #### Usage:
 ```
-{{ dbt_asana.create_security_integration('new_integration_name') }}
+{{ dbt_snowmask.create_security_integration('new_integration_name') }}
 ```
  **'new_integration_name'**: name of the new security integration for tableau server you want to create
 
@@ -237,7 +237,7 @@ on-run-end:
 ```YAML
 # dbt_project.yml
 on-run-end:
-  - "{{ dbt_asana.create_security_integration('new_tableau_server_integration') }}"
+  - "{{ dbt_snowmask.create_security_integration('new_tableau_server_integration') }}"
 ```
 
 In this example the macro will first check whether the current user can use the role ACCOUNTADMIN. If they can't, the message 'YOU DO NOT HAVE THE PRIVILEGES TO CREATE OR DESCRIBE SECURITY INTEGRATIONS' will be returned. If they can use the role ACCOUNTADMIN, the macro will check whether a security integration for tableau server already exists. If it does, the OAUTH endpoint for the existing security integration will be returned. If it doesn't exist, a new security integration will be created with the name 'new_tableau_server_integration' and the OAUTH endpoint of this new security integration will be returned.
