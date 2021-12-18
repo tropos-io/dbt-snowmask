@@ -1,3 +1,14 @@
+# dbt-snowmask
+
+ _Make [dbt](https://github.com/dbt-labs/dbt) manage dynamic data masking for [Snowflake](https://www.snowflake.com)._
+
+## Why do I need something like this?
+Odds are rather high that you deal with personally identifiable data (PII) in your cloud data platform. Laws and regulations have analytics engineers
+enforce policies to make sure data analysts only see identifyable data whenever they're authorized to. Managing the rulesets involved in larger data platforms 
+can be a daunting task. 
+
+That's why we created Snowmask. A [dbt](https://github.com/dbt-labs/dbt) library to govern [dynamic data masking](https://docs.snowflake.com/en/user-guide/security-column-ddm-use.html) capabilities in [Snowflake](https://www.snowflake.com) from the comfort of your own chair.
+
 ## Introduction
 This repo contains the following macros:
 
