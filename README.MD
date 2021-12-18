@@ -1,4 +1,8 @@
 # dbt-snowmask
+![GitHub issues](https://img.shields.io/github/issues/tropos-io/dbt-snowmask)
+![GitHub](https://img.shields.io/github/license/tropos-io/dbt-snowmask)
+![GitHub Repo stars](https://img.shields.io/github/stars/tropos-io/dbt-snowmask?style=social)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/tropos-io/dbt-snowmask)
 
  _Make [dbt](https://github.com/dbt-labs/dbt) manage dynamic data masking for [Snowflake](https://www.snowflake.com)._
 
