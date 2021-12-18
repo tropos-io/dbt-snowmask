@@ -32,12 +32,12 @@ This macro creates, alters and applies masking policies.
 
 ### Installation instructions
 New to dbt packages? Read more about them [here](https://docs.getdbt.com/docs/building-a-dbt-project/package-management/).
-1. Include this package in your `packages.yml` — check [here](https://github.com/tropos-io/dbt-asana/releases) for the latest version number.
+1. Include this package in your `packages.yml` — check [here](https://github.com/tropos-io/dbt-snowmask/releases) for the latest version number.
 
 ```YAML
 # packages.yml
 packages:
-  - git: "https://github.com/tropos-io/dbt-asana.git"
+  - git: "https://github.com/tropos-io/dbt-snowmask.git"
     revision: <latest version>
 
 ```
@@ -97,12 +97,12 @@ This macro creates a row-level secured view from a table. It uses a csv file wit
 
 ### Installation instructions
 New to dbt packages? Read more about them [here](https://docs.getdbt.com/docs/building-a-dbt-project/package-management/).
-1. Include this package in your `packages.yml` — check [here](https://github.com/tropos-io/dbt-asana/releases) for the latest version number.
+1. Include this package in your `packages.yml` — check [here](https://github.com/tropos-io/dbt-snowmask/releases) for the latest version number.
 
 ```YAML
 # packages.yml
 packages:
-  - git: "https://github.com/tropos-io/dbt-asana.git"
+  - git: "https://github.com/tropos-io/dbt-snowmask.git"
     revision: <latest version>
 
 ```
@@ -193,12 +193,12 @@ This macro can only be run by a user with the privileges to use the role ACCOUNT
 
 ### Installation instructions
 New to dbt packages? Read more about them [here](https://docs.getdbt.com/docs/building-a-dbt-project/package-management/).
-1. Include this package in your `packages.yml` — check [here](https://github.com/tropos-io/dbt-asana/releases) for the latest version number.
+1. Include this package in your `packages.yml` — check [here](https://github.com/tropos-io/dbt-snowmask/releases) for the latest version number.
 
 ```YAML
 # packages.yml
 packages:
-  - git: "https://github.com/tropos-io/dbt-asana.git"
+  - git: "https://github.com/tropos-io/dbt-snowmask.git"
     revision: <latest version>
 
 ```
