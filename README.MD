@@ -232,3 +232,6 @@ In this example the macro will first check whether the current user can use the 
 ## Database support
 This package has been tested on Snowflake.
 
+## License
+Licensed under the GNU GPLv3 license (see LICENSE.md file for more details).
+
